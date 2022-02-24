@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 html,
 body {
   padding: 0;
@@ -13,4 +16,57 @@ a {
 
 * {
   box-sizing: border-box;
+}
+.bm-menu-wrap {
+  background: #15152254 !important;
+  /* background: transparent !important; */
+  position: absolute;
+  height: 75% !important;
+  top: 7%;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.bm-overlay {
+  background: none !important;
+}
+@media (max-width: 768px) {
+  .bm-menu-wrap {
+    width: 20% !important;
+  }
+}
+@media (max-width: 640px) {
+  .bm-menu-wrap {
+    width: 40% !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: white;
+}
+
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+.react-burger-menu-btn {
+  display: hidden;
 }

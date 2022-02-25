@@ -30,7 +30,7 @@ export default function Model(props) {
     console.log(modelViewerTexture.model.materials);
   };
   const handleClickOriginal = async () => {
-    setSidebar(!sidebar);
+    
     const modelViewerTexture = ref?.current;
     const baseTexture = await modelViewerTexture.createTexture(
       "https://raw.githubusercontent.com/abidaqib/ModelViewer_TextureSwap/master/3d/t2.png"
@@ -83,9 +83,10 @@ export default function Model(props) {
           shadow-intensity="1"
           camera-controls
           data-js-focus-visible
+          onClick={()=>setSidebar(!sidebar)}
         ></model-viewer>
-        <button onClick={handleClick}>Texture 1</button>
-        <button onClick={handleClickOriginal}>Texture 2</button>
+        {/* <button onClick={handleClick}>Texture 1</button>
+        <button onClick={handleClickOriginal}>Texture 2</button> */}
 
         <Slider {...settings} style={container}>
           {product?.acf?.textures &&

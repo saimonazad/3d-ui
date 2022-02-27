@@ -203,19 +203,19 @@ const SideBar = ({ setSidebar, handleOnOpen, handleClick }) => {
             <div className="absolute lg:h-3/4 h-3/4 overflow-auto lg:pb-2 md:pb-6 w-11/12 mt-3">
               <div>
                 <div className="mb-2">
-                  <div className="bg-subTile lg:w-3/4 md:w-4/5 w-3/4 rounded-tr-lg mb-1">
-                    <h2 className="text-white md:text-xl font-bold lg:py-2 lg:px-2 py-1 px-2">
+                  <div className="bg-subTile lg:w-3/4 md:w-4/5 w-3/4 rounded-tr-lg mb-1 md:h-8">
+                    <h2 className="text-white md:text-xl font-bold lg:px-2 px-2">
                       Cushion
                     </h2>
                   </div>
-                  <div className="grid grid-cols-2 lg:gap-4 gap-2 lg:px-4 lg:py-3 px-3 py-2"> 
+                  <div className="grid grid-cols-2 lg:gap-2 gap-2 lg:px-4 lg:py-3 px-3 py-2"> 
                     {imageData.slice(0, seeMore).map((item, i) => {
                       return (
                         <>
                           <div
                             key={i}
                             onClick={()=> {handleClick, setActive(item.url)}}
-                            className={`${active === item.url ? 'border-white' : 'border-borderColor '} lg:border-8 border-4 rounded cursor-pointer`}
+                            className={`${active === item.url ? 'border-white' : 'border-borderColor '} lg:border-4 border-4 rounded cursor-pointer`}
                           >
                             <img src={item.url} alt="" className="w-full" />
                           </div>
@@ -235,41 +235,41 @@ const SideBar = ({ setSidebar, handleOnOpen, handleClick }) => {
                   )}
                 </div>
                 <div className="mb-2">
-                  <div className="bg-subTile lg:w-3/4 md:w-4/5 w-3/4  rounded-tr-lg mb-1">
-                    <h2 className="text-white md:text-xl font-bold lg:py-2 lg:px-2 py-1 px-2">
+                  <div className="bg-subTile lg:w-3/4 md:w-4/5 w-3/4  rounded-tr-lg mb-1 md:h-8">
+                    <h2 className="text-white md:text-xl font-bold  lg:px-2  px-2">
                       Shell
                     </h2>
                   </div>
-                  <div className="grid grid-cols-2 lg:gap-4 gap-2 lg:px-7 lg:py-3 px-3 py-2">
+                  <div className="grid grid-cols-2 lg:gap-2 gap-2 lg:px-4 lg:py-3 px-3 py-2">
                     {imageData.slice(0, seeMore).map((item, i) => {
                       return (
                         <>
-                          <div
-                            key={i}
-                            onClick={()=> {handleClick, setActive(item.url)}}
-                            className={`${active === item.url ? 'border-white' : 'border-borderColor '} lg:border-8 border-4 rounded cursor-pointer`}
-                          >
-                            <img src={item.url} alt="" className="w-full" />
-                          </div>
-                        </>
+                        <div
+                          key={i}
+                          onClick={()=> {handleClick, setActive(item.url)}}
+                          className={`${active === item.url ? 'border-white' : 'border-borderColor '} lg:border-4 border-4 rounded cursor-pointer`}
+                        >
+                          <img src={item.url} alt="" className="w-full" />
+                        </div>
+                      </>
                       );
                     })}
                   </div>
                 </div>
                 <div className="mb-2">
-                  <div className="bg-subTile lg:w-3/4 md:w-4/5 w-3/4  rounded-tr-lg mb-1">
-                    <h2 className="text-white md:text-xl font-bold lg:py-2 lg:px-2 py-1 px-2">
+                  <div className="bg-subTile lg:w-3/4 md:w-4/5 w-3/4  rounded-tr-lg mb-1 md:h-8">
+                    <h2 className="text-white md:text-xl font-bold  lg:px-2 px-2">
                       Stand
                     </h2>
                   </div>
-                  <div className="grid grid-cols-2 lg:gap-4 gap-2 lg:px-7 lg:py-3 px-3 py-2">
+                  <div className="grid grid-cols-2 lg:gap-2 gap-2 lg:px-4 lg:py-3 px-3 py-2">
                     {imageData.slice(0, seeMore).map((item, i) => {
                       return (
                         <>
                           <div
                             key={i}
                             onClick={()=> {handleClick, setActive(item.url)}}
-                            className={`${active === item.url ? 'border-white' : 'border-borderColor '} lg:border-8 border-4 rounded cursor-pointer`}
+                            className={`${active === item.url ? 'border-white' : 'border-borderColor '} lg:border-4 border-4 rounded cursor-pointer`}
                           >
                             <img src={item.url} alt="" className="w-full" />
                           </div>
@@ -282,7 +282,7 @@ const SideBar = ({ setSidebar, handleOnOpen, handleClick }) => {
             </div>
             <button
               onClick={() => setOpen(!open)}
-              className="py-3 bg-zinc-400 absolute left-0 bottom-0 w-full rounded-bl-lg "
+              className="py-2.5 bg-zinc-400 absolute left-0 bottom-0 w-full rounded-bl-lg "
             >
               <div className="flex justify-center align-middle">
                 <span className="mr-2 mt-1">

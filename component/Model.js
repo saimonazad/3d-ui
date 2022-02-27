@@ -30,7 +30,6 @@ export default function Model(props) {
     console.log(modelViewerTexture.model.materials);
   };
   const handleClickOriginal = async () => {
-    
     const modelViewerTexture = ref?.current;
     const baseTexture = await modelViewerTexture.createTexture(
       "https://raw.githubusercontent.com/abidaqib/ModelViewer_TextureSwap/master/3d/t2.png"
@@ -68,7 +67,7 @@ export default function Model(props) {
     display: "flex",
   };
   return (
-    <div className="">
+    <div className="mx-auto flex">
       <>
         <model-viewer
           style={style}
@@ -83,7 +82,7 @@ export default function Model(props) {
           shadow-intensity="1"
           camera-controls
           data-js-focus-visible
-          onClick={()=>setSidebar(!sidebar)}
+          onClick={() => setSidebar(!sidebar)}
         ></model-viewer>
         {/* <button onClick={handleClick}>Texture 1</button>
         <button onClick={handleClickOriginal}>Texture 2</button> */}
@@ -105,20 +104,21 @@ export default function Model(props) {
             })}
         </Slider>
 
-        <div>
+        {/* <div>
           {sidebar && (
             <SideBar
               setSidebar={setSidebar}
               handleClick={handleClick}
             />
           )}
-        </div>
+        </div> */}
       </>
       {/* {product?.acf?.model ? (
         
       ) : (
         "No data"
       )} */}
+      <SideBar setSidebar={setSidebar} handleClick={handleClick} />
     </div>
   );
 }

@@ -7,7 +7,8 @@ module.exports = {
     extend: {
       colors: {
         subTile: 'rgba(255, 255, 255, 0.4)',
-        borderColor: 'rgba(68, 66, 83, 1)'
+        borderColor: 'rgba(135, 135, 152, 1)',
+        sidebar:'#15152254'
       }
     },
   },

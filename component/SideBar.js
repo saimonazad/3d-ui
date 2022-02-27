@@ -215,7 +215,7 @@ const SideBar = ({ setSidebar, handleOnOpen, handleClick }) => {
                           <div
                             key={i}
                             onClick={()=> {handleClick, setActive(item.url)}}
-                            className={`${active === item.url ? 'border-white' : 'border-borderColor '} h-14 lg:h-18 xl:h-20 border-4 xl:border-8 lg:border-4 rounded cursor-pointer`}
+                            className={`${active === item.url ? 'border-white' : 'border-borderColor '} h-14 lg:h-18 xl:h-20 2xl:h-24 border-4 xl:border-8 lg:border-4 rounded cursor-pointer`}
                           >
                             <img src={item.url} alt="" className="w-full h-full" />
                           </div>
@@ -247,7 +247,7 @@ const SideBar = ({ setSidebar, handleOnOpen, handleClick }) => {
                         <div
                           key={i}
                           onClick={()=> {handleClick, setActive(item.url)}}
-                          className={`${active === item.url ? 'border-white' : 'border-borderColor '} h-14 lg:h-18 xl:h-20 border-4 xl:border-8 lg:border-4 rounded cursor-pointer`}
+                          className={`${active === item.url ? 'border-white' : 'border-borderColor '} h-14 lg:h-18 xl:h-20 2xl:h-24 border-4 xl:border-8 lg:border-4 rounded cursor-pointer`}
                         >
                           <img src={item.url} alt="" className="w-full h-full" />
                         </div>
@@ -269,7 +269,7 @@ const SideBar = ({ setSidebar, handleOnOpen, handleClick }) => {
                           <div
                             key={i}
                             onClick={()=> {handleClick, setActive(item.url)}}
-                            className={`${active === item.url ? 'border-white' : 'border-borderColor '} h-14 lg:h-18 xl:h-20 border-4 xl:border-8 lg:border-4 rounded cursor-pointer`}
+                            className={`${active === item.url ? 'border-white' : 'border-borderColor '} h-14 lg:h-18 xl:h-20 2xl:h-24 border-4 xl:border-8 lg:border-4 rounded cursor-pointer`}
                           >
                             <img src={item.url} alt="" className="w-full h-full" />
                           </div>

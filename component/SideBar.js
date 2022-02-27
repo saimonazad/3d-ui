@@ -190,7 +190,7 @@ const SideBar = ({ setSidebar, handleOnOpen, handleClick }) => {
         <div
           className={`${
             open ? "translate-x-0" : "translate-x-full"
-          } lg:top-24 top-16 right-0 fixed bg-sidebar w-32 md:w-[18vw] lg:w-[15vw] h-4/5 z-40 ease-in-out duration-200 rounded-l-lg }`}
+          } lg:top-24 top-16 right-0 fixed bg-sidebar w-32 md:w-[18vw] lg:w-[12vw] h-4/5 z-40 ease-in-out duration-200 rounded-l-lg }`}
         >
           <div>
             <div className="mx-auto lg:px-10 lg:py-5 md:px-5 px-8 py-3 md:py-2">
@@ -200,7 +200,7 @@ const SideBar = ({ setSidebar, handleOnOpen, handleClick }) => {
                 className="w-full"
               />
             </div>
-            <div className="absolute lg:h-4/5 h-5/6 overflow-auto lg:pb-9 md:pb-6">
+            <div className="absolute lg:h-3/4 h-3/4 overflow-auto lg:pb-2 md:pb-6 w-11/12 mt-3">
               <div>
                 <div className="mb-2">
                   <div className="bg-subTile lg:w-3/4 md:w-4/5 w-3/4 rounded-tr-lg mb-1">
@@ -208,7 +208,7 @@ const SideBar = ({ setSidebar, handleOnOpen, handleClick }) => {
                       Cushion
                     </h2>
                   </div>
-                  <div className="grid grid-cols-2 lg:gap-4 gap-2 lg:px-7 lg:py-3 px-3 py-2"> 
+                  <div className="grid grid-cols-2 lg:gap-4 gap-2 lg:px-4 lg:py-3 px-3 py-2"> 
                     {imageData.slice(0, seeMore).map((item, i) => {
                       return (
                         <>

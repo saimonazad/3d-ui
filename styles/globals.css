@@ -45,18 +45,18 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 2px;
-  left: -100px !important;
+  width: 1px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #0000;
+  background: white;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: white;
+  background: black;
+  border-radius: 9999px !important;
 }
 
 /* Handle on hover */

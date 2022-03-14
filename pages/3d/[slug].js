@@ -6,7 +6,7 @@ const OAuth = require("oauth-1.0a");
 const crypto = require("crypto");
 const https = require("https");
 
-const Model = dynamic(() => import("../../component/Model"), { ssr: false });
+const ModelViewer = dynamic(() => import("../../component/Model"), { ssr: false });
 
 // eslint-disable-next-line react/display-name
 export default function App(props) {
@@ -18,7 +18,7 @@ export default function App(props) {
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-  return <Model product={product} />;
+  return <ModelViewer product={product} />;
 }
 
 export async function getServerSideProps(context) {

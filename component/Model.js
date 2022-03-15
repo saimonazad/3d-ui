@@ -11,35 +11,41 @@ export default function Model({ product }) {
 
   useEffect(() => {
     (async () => {
-      let materialIndex;
-      const matchedArray = product?.acf?.material_section.map((k) => {
-        const filtered = k.textures_section.filter(
-          (e) => e.color == color && e.material_name == material
-        );
-        return filtered.length > 0
-          ? { ...filtered[0], model_material: k.model_material }
-          : {};
-      });
-      const matched = Object.assign(...matchedArray);
-
-      if (ref?.current) {
-        const modelViewerTexture = ref?.current;
-
-        modelViewerTexture.addEventListener("load", async (evt) => {
-          const materials = modelViewerTexture?.model?.materials;
-          materialIndex = materials.findIndex(function (item, i) {
-            return item?.["name"] == matched?.model_material;
-          });
-
-          if (materialIndex != undefined) {
-            const baseTexture = await modelViewerTexture.createTexture(
-              matched?.texture_image
-            );
-            modelViewerTexture.model.materials[
-              materialIndex
-            ].pbrMetallicRoughness["baseColorTexture"].setTexture(baseTexture);
-          }
+      if (product?.acf) {
+        let materialIndex;
+        const matchedArray = product?.acf?.material_section?.map((k) => {
+          const filtered = k.textures_section.filter(
+            (e) => e.color == color && e.material_name == material
+          );
+          return filtered.length > 0
+            ? { ...filtered[0], model_material: k.model_material }
+            : {};
         });
+        const matched = matchedArray ? Object.assign(...matchedArray) : null;
+
+        if (ref?.current) {
+          const modelViewerTexture = ref?.current;
+
+          modelViewerTexture.addEventListener("load", async (evt) => {
+            const materials = modelViewerTexture?.model?.materials;
+            if (matched != null) {
+              materialIndex = materials.findIndex(function (item, i) {
+                return item?.["name"] == matched?.model_material;
+              });
+
+              if (materialIndex != undefined) {
+                const baseTexture = await modelViewerTexture.createTexture(
+                  matched?.texture_image
+                );
+                modelViewerTexture.model.materials[
+                  materialIndex
+                ].pbrMetallicRoughness["baseColorTexture"].setTexture(
+                  baseTexture
+                );
+              }
+            }
+          });
+        }
       }
     })();
   }, [product]);

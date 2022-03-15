@@ -1,42 +1,48 @@
 import "@google/model-viewer";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 
 export default function Model({ product }) {
+  const router = useRouter();
+  const { color, material } = router.query;
+
   const ref = useRef(null);
-  const { product } = props;
-  const modelPath =
-    "https://raw.githubusercontent.com/abidaqib/ModelViewer_TextureSwap/master/3d/2.gltf";
+  const modelPath = product?.acf?.["3d_model"]?.url;
 
-  // const [model, setModel] = useState("");
-
-  // useEffect(() => {
-  //   setModel(product?.acf?.model);
-  // }, [product]);
-  // console.log(product);
-
-  const handleClick = async () => {
-    const modelViewerTexture = ref?.current;
-    const baseTexture = await modelViewerTexture.createTexture(
-      "https://raw.githubusercontent.com/abidaqib/ModelViewer_TextureSwap/master/3d/t1.png"
-    );
-    console.log("modelViewerTexture", modelViewerTexture);
-    modelViewerTexture.model.materials[0].pbrMetallicRoughness[
-      "baseColorTexture"
-    ].setTexture(baseTexture);
-    console.log(modelViewerTexture.model.materials);
-  };
-  const handleClickOriginal = async () => {
-    const modelViewerTexture = ref?.current;
-    const baseTexture = await modelViewerTexture.createTexture(
-      "https://raw.githubusercontent.com/abidaqib/ModelViewer_TextureSwap/master/3d/t2.png"
-    );
-    modelViewerTexture.model.materials[0].pbrMetallicRoughness[
-      "baseColorTexture"
-    ].setTexture(baseTexture);
-  };
   useEffect(() => {
-   
-  }, []);
+    (async () => {
+      let materialIndex;
+      const matchedArray = product?.acf?.material_section.map((k) => {
+        const filtered = k.textures_section.filter(
+          (e) => e.color == color && e.material_name == material
+        );
+        return filtered.length > 0
+          ? { ...filtered[0], model_material: k.model_material }
+          : {};
+      });
+      const matched = Object.assign(...matchedArray);
+
+      if (ref?.current) {
+        const modelViewerTexture = ref?.current;
+
+        modelViewerTexture.addEventListener("load", async (evt) => {
+          const materials = modelViewerTexture?.model?.materials;
+          materialIndex = materials.findIndex(function (item, i) {
+            return item?.["name"] == matched?.model_material;
+          });
+
+          if (materialIndex != undefined) {
+            const baseTexture = await modelViewerTexture.createTexture(
+              matched?.texture_image
+            );
+            modelViewerTexture.model.materials[
+              materialIndex
+            ].pbrMetallicRoughness["baseColorTexture"].setTexture(baseTexture);
+          }
+        });
+      }
+    })();
+  }, [product]);
 
   return (
     <div className="container">
@@ -44,35 +50,19 @@ export default function Model({ product }) {
         ref={ref}
         id="model-viewer"
         alt="3d model"
+        loading="eager"
         poster="/loading.gif"
         src={modelPath}
-        ar=""
-        ar-modes="webxr scene-viewer quick-look"
         seamless-poster
         shadow-intensity="1"
         camera-controls
         data-js-focus-visible
-        preload=""
-        ar-placement="floor"
-        ar-scale="auto"
-        xr-environment=""
         minimumrenderscale="1"
         background-color="#ffffff"
         environment-image="neutral"
         shadow-softness="1"
         auto-rotate=""
-        ar-status="presenting"
-      >
-        <button slot="ar-button" id="ar-button">
-          ✋ View in your space
-        </button>
-
-        <div id="ar-prompt">
-          <img src="../../assets/hand.png" />
-        </div>
-
-        <button id="ar-failure">AR is not tracking!</button>
-      </model-viewer>
+      ></model-viewer>
     </div>
   );
 }

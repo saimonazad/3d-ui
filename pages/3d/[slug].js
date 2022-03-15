@@ -1,13 +1,14 @@
-import { useRouter } from "next/router";
-const OAuth = require("oauth-1.0a");
-const crypto = require("crypto");
-import fetch from "isomorphic-unfetch";
 // import { GLTFModel, AmbientLight, DirectionLight } from "react-3d-viewer";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import React from "react";
+const OAuth = require("oauth-1.0a");
+const crypto = require("crypto");
 const https = require("https");
 
-const Model = dynamic(() => import("../../component/Model"), { ssr: false });
+const ModelViewer = dynamic(() => import("../../component/Model"), {
+  ssr: false,
+});
 
 // eslint-disable-next-line react/display-name
 export default function App(props) {
@@ -19,7 +20,7 @@ export default function App(props) {
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-  return <Model product={product} />;
+  return <ModelViewer product={product} />;
 }
 
 export async function getServerSideProps(context) {
@@ -32,8 +33,8 @@ export async function getServerSideProps(context) {
 
   const oauth = OAuth({
     consumer: {
-      key: "ck_a3c9cbdaa576d61c7c20dd0c90141bf0cb527e6b",
-      secret: "cs_744cf824c2a7f48ca509745c298ab0a8b807f4da",
+      key: `${process.env.NEXT_PUBLIC_CONSUMER_KEY}`,
+      secret: `${process.env.NEXT_PUBLIC_CONSUMER_SECRET}`,
     },
     signature_method: "HMAC-SHA1",
     hash_function(base_string, key) {

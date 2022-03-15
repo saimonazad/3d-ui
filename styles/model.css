@@ -1,0 +1,40 @@
+/* This keeps child nodes hidden while the element loads */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+:not(:defined) > * {
+  display: none;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+}
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+  overflow: hidden;
+  --poster-color: #eee;
+}
+
+@keyframes circle {
+  from {
+    transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg);
+  }
+}
+
+@keyframes elongate {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(-100px);
+  }
+}
